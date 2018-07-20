@@ -1,0 +1,12 @@
+server {
+  location /files {
+    alias /files/;
+    gzip_static on;
+    expires max;
+    add_header Cache-Control private;
+  }
+
+  location / {
+    proxy_pass http://web:8081;
+  }
+}
